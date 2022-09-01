@@ -62,7 +62,7 @@ button {
     align-items: center;
 }
 
-.buttons .left {
+.buttons .numbers {
     height: 300px;
     width: 175px;
     background-color: #7d7d7d;
@@ -74,7 +74,7 @@ button {
     border-radius: 5px;
 }
 
-.buttons .right {
+.buttons .operators {
     height: 300px;
     width: 75px;
     background-color: #7d7d7d;
