@@ -42,11 +42,20 @@ button {
     border-color: rgb(36, 36, 36);
     border-radius: 5px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.display {
+.equation {
+    margin-bottom: 5px;
     margin-inline: 10px;
+}
+
+.entry {
+    margin-top: 5px;
+    margin-inline: 10px;
+
 }
 
 .buttons {
