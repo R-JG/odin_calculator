@@ -15,16 +15,14 @@ numberButtons.forEach(button => button.addEventListener("click", (e) => {
 }));
 
 operatorButtons.forEach(button => button.addEventListener("click", (e) => {
-    if (numberEntry === "") {
-        return;
-    } else {
-        equationArray.push(numberEntry);
-        numberEntry = "";
-        equationArray.push(button.textContent);
+    if (numberEntry === "") return;
 
-        displayEquation.textContent = equationArray.join(" ");
-        displayEntry.textContent = ">"
-    }
+    equationArray.push(numberEntry);
+    numberEntry = "";
+    equationArray.push(button.textContent);
+
+    displayEquation.textContent = equationArray.join(" ");
+    displayEntry.textContent = ">"
 }));
 
 clearButton.addEventListener("click", (e) => {
@@ -51,46 +49,44 @@ Then display the result in the equation display, and reset the entry variable an
 */
 
 function operate() {
-    if (numberEntry === "") {
-        return;
-    } else {
-        equationArray.push(numberEntry);
+    if (numberEntry === "") return;
 
-        // Division loop
-        for (i = 0; i <= (equationArray.length - 2); i++) {
-            if (equationArray[i] === "÷") {
-                let divisionResult = equationArray[i - 1] / equationArray[i + 1];
-                equationArray.splice((i - 1), 3, divisionResult);
-            }
+    equationArray.push(numberEntry);
+
+    // Division loop
+    for (i = 0; i <= (equationArray.length - 2); i++) {
+        if (equationArray[i] === "÷") {
+            let divisionResult = equationArray[i - 1] / equationArray[i + 1];
+            equationArray.splice((i - 1), 3, divisionResult);
         }
-
-        // Multiplication loop
-        for (i = 0; i <= (equationArray.length - 2); i++) {
-            if (equationArray[i] === "x") {
-                let multiplicationResult = equationArray[i - 1] * equationArray[i + 1];
-                equationArray.splice((i - 1), 3, multiplicationResult);
-            }
-        }
-
-        // Addition loop
-        for (i = 0; i <= (equationArray.length - 2); i++) {
-            if (equationArray[i] === "+") {
-                let additionResult = +equationArray[i - 1] + +equationArray[i + 1];
-                equationArray.splice((i - 1), 3, additionResult);
-            }
-        }
-
-        // Subtraction loop
-        for (i = 0; i <= (equationArray.length - 2); i++) {
-            if (equationArray[i] === "-") {
-                let subtractionResult = equationArray[i - 1] - equationArray[i + 1];
-                equationArray.splice((i - 1), 3, subtractionResult);
-            }
-        }
-
-        displayEquation.textContent = equationArray.join(" ");
-        displayEntry.textContent = ">";
-        equationArray = [];
-        numberEntry = "";
     }
+
+    // Multiplication loop
+    for (i = 0; i <= (equationArray.length - 2); i++) {
+        if (equationArray[i] === "x") {
+            let multiplicationResult = equationArray[i - 1] * equationArray[i + 1];
+            equationArray.splice((i - 1), 3, multiplicationResult);
+        }
+    }
+
+    // Addition loop
+    for (i = 0; i <= (equationArray.length - 2); i++) {
+        if (equationArray[i] === "+") {
+            let additionResult = +equationArray[i - 1] + +equationArray[i + 1];
+            equationArray.splice((i - 1), 3, additionResult);
+        }
+    }
+
+    // Subtraction loop
+    for (i = 0; i <= (equationArray.length - 2); i++) {
+        if (equationArray[i] === "-") {
+            let subtractionResult = equationArray[i - 1] - equationArray[i + 1];
+            equationArray.splice((i - 1), 3, subtractionResult);
+        }
+    }
+
+    displayEquation.textContent = equationArray.join(" ");
+    displayEntry.textContent = ">";
+    equationArray = [];
+    numberEntry = "";
 }
